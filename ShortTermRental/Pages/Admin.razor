@@ -1,0 +1,124 @@
+﻿<!-- AdminPage.razor -->
+@page "/admin"
+
+<PageTitle>Admin Panel</PageTitle>
+
+<h1>Admin Panel</h1>
+<p>Manage booking fields and properties.</p>
+
+<section>
+	<h2>Manage Booking Fields</h2>
+	<div class="form-group">
+		<label for="newField">Add New Field</label>
+		<input id="newField" type="text" class="form-control" @bind="NewField" />
+		<button class="btn-primary" @onclick="AddField">Add Field</button>
+	</div>
+
+	<ul>
+		@foreach (var field in BookingFields)
+		{
+			<li>
+				@field <button class="btn-danger" @onclick="() => DeleteField(field)">Delete</button>
+			</li>
+		}
+	</ul>
+</section>
+
+<section>
+	<h2>Manage Properties</h2>
+	<div class="form-group">
+		<label for="newProperty">Add New Property</label>
+		<input id="newProperty" type="text" class="form-control" @bind="NewProperty" />
+		<button class="btn-primary" @onclick="AddProperty">Add Property</button>
+	</div>
+
+	<ul>
+		@foreach (var property in Properties)
+		{
+			<li>
+				@property <button class="btn-danger" @onclick="() => DeleteProperty(property)">Delete</button>
+			</li>
+		}
+	</ul>
+</section>
+
+@code {
+	private string NewField { get; set; } = "";
+	private List<string> BookingFields { get; set; } = new List<string> { "Name", "Email", "Phone" };
+
+	private string NewProperty { get; set; } = "";
+	private List<string> Properties { get; set; } = new List<string> { "Rolling Hills Lodge" };
+
+	private void AddField()
+	{
+		if (!string.IsNullOrWhiteSpace(NewField))
+		{
+			BookingFields.Add(NewField);
+			NewField = "";
+		}
+	}
+
+	private void DeleteField(string field)
+	{
+		BookingFields.Remove(field);
+	}
+
+	private void AddProperty()
+	{
+		if (!string.IsNullOrWhiteSpace(NewProperty))
+		{
+			Properties.Add(NewProperty);
+			NewProperty = "";
+		}
+	}
+
+	private void DeleteProperty(string property)
+	{
+		Properties.Remove(property);
+	}
+}
+
+<style>
+	.form-group {
+		margin-bottom: 20px;
+	}
+
+	.btn-primary {
+		background-color: #27ae60;
+		color: white;
+		padding: 10px 20px;
+		font-size: 1rem;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		margin-left: 10px;
+	}
+
+		.btn-primary:hover {
+			background-color: #2ecc71;
+		}
+
+	.btn-danger {
+		background-color: #e74c3c;
+		color: white;
+		padding: 5px 10px;
+		font-size: 0.9rem;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		margin-left: 10px;
+	}
+
+		.btn-danger:hover {
+			background-color: #c0392b;
+		}
+
+	ul {
+		list-style-type: none;
+		padding: 0;
+	}
+
+	li {
+		margin-bottom: 10px;
+	}
+</style>

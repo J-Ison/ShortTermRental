@@ -1,0 +1,77 @@
+﻿@inherits LayoutComponentBase
+
+<div class="container-fluid">
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Nestled Nooks</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="/">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/booking">Booking</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/properties">Properties</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/contact">Contact</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/login">Login/Register</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Main Layout -->
+	<div class="row">
+		<!-- Sidebar (Optional) -->
+		@* Uncomment and customize if you decide to include a sidebar *@
+		@* <aside class="col-md-3 d-none d-md-block bg-light p-3">
+            <h4>Quick Links</h4>
+            <ul class="list-unstyled">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+            </ul>
+        </aside> *@
+
+		<!-- Main Content -->
+		<section class="col-12">
+			<main class="px-4">
+				<article class="content">
+					@Body
+				</article>
+			</main>
+		</section>
+	</div>
+</div>
+
+<style>
+	.navbar-brand {
+		font-size: 1.5rem;
+		font-weight: bold;
+	}
+
+	.navbar-nav .nav-link {
+		font-size: 1rem;
+	}
+
+	.content {
+		margin-top: 20px;
+		padding: 20px;
+		background: #f9f9f9;
+		border-radius: 10px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+
+	
+</style>

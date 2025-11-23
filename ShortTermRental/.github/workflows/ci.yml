@@ -1,0 +1,38 @@
+name: Build and Test - ShortTermRental
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x' # change if needed
+
+    - name: Restore
+      run: dotnet restore ./ShortTermRental/ShortTermRental.csproj
+
+    - name: Build
+      run: dotnet build ./ShortTermRental/ShortTermRental.csproj --configuration Release --no-restore
+
+    - name: Run Tests
+      run: dotnet test ./ShortTermRental.Tests/ShortTermRental.Tests.csproj --configuration Release --no-build
+
+    - name: Publish
+      run: dotnet publish ./ShortTermRental/ShortTermRental.csproj --configuration Release --output ./publish
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ShortTermRental-drop
+        path: ./publish

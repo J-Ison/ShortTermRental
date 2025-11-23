@@ -1,0 +1,101 @@
+﻿<!-- RollingHillsLodge.razor -->
+@page "/properties/rolling-hills-lodge"
+
+<PageTitle>Rolling Hills Lodge</PageTitle>
+
+<div class="property-page">
+	<header class="property-header">
+		<h1>Rolling Hills Lodge</h1>
+		<p>A serene retreat nestled in the rolling hills, offering breathtaking views and ultimate relaxation.</p>
+	</header>
+
+	<section class="property-details">
+		<img src="/images/rolling-hills-lodge.jpg" alt="Rolling Hills Lodge" class="property-image" />
+
+		<div class="details">
+			<h2>About This Property</h2>
+			<p>Escape to the tranquility of nature at Rolling Hills Lodge. Surrounded by lush greenery and rolling hills, this lodge offers a perfect getaway for families, couples, or solo travelers seeking peace and serenity.</p>
+
+			<h3>Amenities</h3>
+			<ul>
+				<li>Spacious rooms with scenic views</li>
+				<li>Fully equipped kitchen</li>
+				<li>Outdoor seating and BBQ area</li>
+				<li>High-speed Wi-Fi</li>
+				<li>Pet-friendly</li>
+			</ul>
+
+			<h3>Location</h3>
+			<p>Located just 20 minutes from downtown, Rolling Hills Lodge is easily accessible yet feels worlds away from the hustle and bustle.</p>
+
+			<a href="/booking?property=Rolling%20Hills%20Lodge" class="btn-primary">Book Now</a>
+		</div>
+	</section>
+</div>
+
+<style>
+	.property-page {
+		font-family: Arial, sans-serif;
+		margin: 20px;
+	}
+
+	.property-header {
+		text-align: center;
+		padding: 20px;
+		background-color: #f5f5f5;
+		border-radius: 10px;
+		margin-bottom: 20px;
+	}
+
+		.property-header h1 {
+			font-size: 2.5rem;
+			color: #2c3e50;
+		}
+
+		.property-header p {
+			font-size: 1.2rem;
+			color: #34495e;
+		}
+
+	.property-details {
+		display: flex;
+		gap: 20px;
+		flex-wrap: wrap;
+	}
+
+	.property-image {
+		max-width: 400px;
+		border-radius: 10px;
+	}
+
+	.details {
+		flex: 1;
+		font-size: 1rem;
+		color: #34495e;
+	}
+
+		.details h2, .details h3 {
+			color: #2c3e50;
+		}
+
+		.details ul {
+			list-style-type: disc;
+			margin-left: 20px;
+		}
+
+	.btn-primary {
+		background-color: #27ae60;
+		color: white;
+		padding: 10px 20px;
+		font-size: 1rem;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		text-decoration: none;
+		display: inline-block;
+	}
+
+		.btn-primary:hover {
+			background-color: #2ecc71;
+		}
+</style>

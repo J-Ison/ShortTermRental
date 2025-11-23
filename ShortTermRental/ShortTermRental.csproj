@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Pages\_Host.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="docs\" />
+    <Folder Include="scripts\" />
+    <Folder Include="tests\" />
+    <Folder Include="wwwroot\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".github\workflows\ci.yml" />
+  </ItemGroup>
+
+  <!-- Only ONE set of EF Core packages. Version locked. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>
