@@ -21,11 +21,14 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
-    - name: Build
+    - name: Build solution
       run: dotnet build --configuration Release --no-restore
 
-    - name: Publish
-      run: dotnet publish -c Release -o ./publish
+    - name: Publish web project
+      run: dotnet publish ./ShortTermRental/ShortTermRental.csproj -c Release -o ./publish
+
+    - name: List publish folder contents
+      run: ls -R ./publish
 
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
