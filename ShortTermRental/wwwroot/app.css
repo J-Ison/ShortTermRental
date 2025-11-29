@@ -12,8 +12,12 @@ a, .btn-link {
     border-color: #1861ac;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 .content {
@@ -43,13 +47,14 @@ h1:focus {
 }
 
     .blazor-error-boundary::after {
-        content: "An error has occurred."
+        content: "An error has occurred.";
     }
 
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
 
+/* Login styles */
 .login-wrapper {
     display: flex;
     justify-content: center;
@@ -131,3 +136,110 @@ h1:focus {
         .login-register a:hover {
             text-decoration: underline;
         }
+
+/* =========================
+   Deerfield Retreat page
+   ========================= */
+
+/* Hero */
+.property-hero-section {
+    background: #eef2f7;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.hero-eyebrow {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #6b7280;
+}
+
+.hero-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.hero-subtitle {
+    max-width: 640px;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: #4b5563;
+}
+
+.hero-btn {
+    padding-inline: 1.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+/* Main section */
+.property-main {
+    background: #f9fafb;
+}
+
+.property-image-card {
+    background: #ffffff;
+    border-radius: 1.25rem;
+}
+
+.property-image {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.property-image-card:hover .property-image {
+    transform: scale(1.03);
+}
+
+.property-text-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #111827;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #111827;
+}
+
+.amenities-list {
+    padding-left: 1.2rem;
+}
+
+    .amenities-list li {
+        margin-bottom: 0.25rem;
+    }
+
+/* Responsive tweaks */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .property-text-card {
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.96rem;
+    }
+
+    .property-text-card {
+        padding: 1.25rem 1.25rem;
+    }
+}
