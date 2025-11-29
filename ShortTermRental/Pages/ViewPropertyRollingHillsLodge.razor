@@ -1,34 +1,56 @@
-﻿<!-- RollingHillsLodge.razor -->
-@page "/properties/rolling-hills-lodge"
+﻿@page "/"
+@page "/properties/deerfield-retreat"
 
-<PageTitle>Rolling Hills Lodge</PageTitle>
+<PageTitle>Deerfield Retreat</PageTitle>
 
 <div class="property-page">
 	<header class="property-header">
-		<h1>Rolling Hills Lodge</h1>
-		<p>A serene retreat nestled in the rolling hills, offering breathtaking views and ultimate relaxation.</p>
+		<h1>Deerfield Retreat</h1>
+		<p>A peaceful getaway surrounded by open fields and visiting deer — the perfect spot to slow down, recharge, and enjoy the quiet.</p>
 	</header>
 
 	<section class="property-details">
-		<img src="/images/rolling-hills-lodge.jpg" alt="Rolling Hills Lodge" class="property-image" />
+		<img src="/images/deerfield-retreat.jpg" alt="Deerfield Retreat exterior view" class="property-image" />
 
 		<div class="details">
 			<h2>About This Property</h2>
-			<p>Escape to the tranquility of nature at Rolling Hills Lodge. Surrounded by lush greenery and rolling hills, this lodge offers a perfect getaway for families, couples, or solo travelers seeking peace and serenity.</p>
+			<p>
+				Deerfield Retreat is a cozy escape tucked away from the noise, with wide-open views and frequent deer sightings right from the yard.
+				Whether you're here with family, friends, or on a solo reset, it’s designed to feel calm, comfortable, and easy.
+			</p>
 
 			<h3>Amenities</h3>
 			<ul>
-				<li>Spacious rooms with scenic views</li>
-				<li>Fully equipped kitchen</li>
-				<li>Outdoor seating and BBQ area</li>
-				<li>High-speed Wi-Fi</li>
-				<li>Pet-friendly</li>
+				<li>4 comfortable bedrooms with scenic views</li>
+				<li>Fully equipped kitchen with modern appliances</li>
+				<li>Outdoor seating area with BBQ grill</li>
+				<li>High-speed Wi-Fi for work or streaming</li>
+				<li>Washer &amp; dryer for longer stays</li>
+				<li>Pet-friendly (with prior approval)</li>
 			</ul>
 
 			<h3>Location</h3>
-			<p>Located just 20 minutes from downtown, Rolling Hills Lodge is easily accessible yet feels worlds away from the hustle and bustle.</p>
+			<p>
+				Deerfield Retreat sits just about 20 minutes from town, so you’re close to groceries, restaurants, and attractions —
+				but far enough out that nights stay quiet and the stars stay bright.
+			</p>
 
-			<a href="/booking?property=Rolling%20Hills%20Lodge" class="btn-primary">Book Now</a>
+			<div class="booking-actions">
+				<a href="https://www.airbnb.com/rooms/YOUR_AIRBNB_ID"
+				   target="_blank"
+				   rel="noopener noreferrer"
+				   class="btn-primary">
+					View on Airbnb
+				</a>
+				@* Uncomment later when you have Vrbo
+				<a href="https://www.vrbo.com/YOUR_VRBO_ID"
+				   target="_blank"
+				   rel="noopener noreferrer"
+				   class="btn-secondary">
+					View on Vrbo
+				</a>
+				*@
+			</div>
 		</div>
 	</section>
 </div>
@@ -47,55 +69,87 @@
 		margin-bottom: 20px;
 	}
 
-		.property-header h1 {
-			font-size: 2.5rem;
-			color: #2c3e50;
-		}
+	.property-header h1 {
+		font-size: 2.5rem;
+		color: #2c3e50;
+		margin-bottom: 10px;
+	}
 
-		.property-header p {
-			font-size: 1.2rem;
-			color: #34495e;
-		}
+	.property-header p {
+		font-size: 1.1rem;
+		color: #34495e;
+		max-width: 700px;
+		margin: 0 auto;
+	}
 
 	.property-details {
 		display: flex;
 		gap: 20px;
 		flex-wrap: wrap;
+		align-items: flex-start;
 	}
 
 	.property-image {
 		max-width: 400px;
+		width: 100%;
 		border-radius: 10px;
+		object-fit: cover;
 	}
 
 	.details {
 		flex: 1;
 		font-size: 1rem;
 		color: #34495e;
+		min-width: 260px;
 	}
 
-		.details h2, .details h3 {
-			color: #2c3e50;
-		}
+	.details h2,
+	.details h3 {
+		color: #2c3e50;
+		margin-top: 10px;
+	}
 
-		.details ul {
-			list-style-type: disc;
-			margin-left: 20px;
-		}
+	.details ul {
+		list-style-type: disc;
+		margin-left: 20px;
+	}
 
-	.btn-primary {
-		background-color: #27ae60;
-		color: white;
+	.booking-actions {
+		margin-top: 20px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.btn-primary,
+	.btn-secondary {
 		padding: 10px 20px;
 		font-size: 1rem;
-		border: none;
 		border-radius: 5px;
 		cursor: pointer;
 		text-decoration: none;
 		display: inline-block;
+		transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 	}
 
-		.btn-primary:hover {
-			background-color: #2ecc71;
-		}
+	.btn-primary {
+		background-color: #27ae60;
+		color: white;
+		border: none;
+	}
+
+	.btn-primary:hover {
+		background-color: #2ecc71;
+	}
+
+	.btn-secondary {
+		background-color: transparent;
+		color: #27ae60;
+		border: 1px solid #27ae60;
+	}
+
+	.btn-secondary:hover {
+		background-color: #27ae60;
+		color: white;
+	}
 </style>
