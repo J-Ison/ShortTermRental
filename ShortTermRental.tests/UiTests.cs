@@ -15,7 +15,16 @@ public class UiTests : IDisposable
     public UiTests()
     {
         var options = new ChromeOptions();
-        //options.AddArgument("--headless=new");   // comment this out if you want to SEE the browser
+
+        // Headless is required on CI (no display)
+        options.AddArgument("--headless=new");
+
+        // These three are VERY important on GitHub Actions (Linux containers)
+        options.AddArgument("--no-sandbox");
+        options.AddArgument("--disable-dev-shm-usage");
+        options.AddArgument("--disable-gpu"); // harmless on Linux; helps stability
+
+        // Optional
         options.AddArgument("--window-size=1920,1080");
 
         _driver = new ChromeDriver(options);

@@ -17,7 +17,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '9.0.x' # change if needed
+        dotnet-version: '8.0.x' # match your net8.0 projects
 
     - name: Restore
       run: dotnet restore ./ShortTermRental/ShortTermRental.csproj
@@ -25,9 +25,17 @@ jobs:
     - name: Build
       run: dotnet build ./ShortTermRental/ShortTermRental.csproj --configuration Release --no-restore
 
+    - name: Install Google Chrome
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wget gpg
+        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+        
     - name: Run Tests
-      run: dotnet test ./ShortTermRental.tests/ShortTermRental.tests.csproj --configuration Release
-
+      run: dotnet test ./ShortTermRental.tests/ShortTermRental.tests.csproj --configuration Release --no-build
 
     - name: Publish
       run: dotnet publish ./ShortTermRental/ShortTermRental.csproj --configuration Release --output ./publish
