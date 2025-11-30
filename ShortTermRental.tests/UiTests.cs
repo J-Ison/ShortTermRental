@@ -9,7 +9,8 @@ namespace ShortTermRental.UiTests;
 public class UiTests : IDisposable
 {
     private readonly IWebDriver _driver;
-    private const string BaseUrl = "http://localhost:5017/"; // change if needed
+    //private const string BaseUrl = "http://localhost:5017/"; // local
+    private const string BaseUrl = "https://nestlednooks-bvd3htchb9hwhzex.centralus-01.azurewebsites.net/"; //deployed site
 
     public UiTests()
     {
