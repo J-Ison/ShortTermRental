@@ -35,7 +35,7 @@ jobs:
         sudo apt-get install -y google-chrome-stable
         
     - name: Run Tests
-      run: dotnet test ./ShortTermRental.tests/ShortTermRental.tests.csproj --configuration Release --no-build
+      run: dotnet test ./ShortTermRental.tests/ShortTermRental.tests.csproj --configuration Release
 
     - name: Publish
       run: dotnet publish ./ShortTermRental/ShortTermRental.csproj --configuration Release --output ./publish
