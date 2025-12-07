@@ -10,21 +10,24 @@ public class UiTests : IDisposable
 {
     private readonly IWebDriver _driver;
     //private const string BaseUrl = "http://localhost:5017/"; // local
-    private const string BaseUrl = "https://nestlednooks-bvd3htchb9hwhzex.centralus-01.azurewebsites.net/"; //deployed site
+    private const string BaseUrl = "https://nestlednooks-bvd3htchb9hwhzex.centralus-01.azurewebsites.net/"; // deployed site
 
     public UiTests()
     {
         var options = new ChromeOptions();
 
-        // Headless is required on CI (no display)
+#if !DEBUG
+        // CI / Release: run headless (no display) and use container-safe flags
         options.AddArgument("--headless=new");
-
-        // These three are VERY important on GitHub Actions (Linux containers)
         options.AddArgument("--no-sandbox");
         options.AddArgument("--disable-dev-shm-usage");
-        options.AddArgument("--disable-gpu"); // harmless on Linux; helps stability
+        options.AddArgument("--disable-gpu");
+#else
+        // Local / Debug: show real browser for debugging
+        options.AddArgument("--start-maximized");
+#endif
 
-        // Optional
+        // Optional but nice for consistency
         options.AddArgument("--window-size=1920,1080");
 
         _driver = new ChromeDriver(options);
@@ -68,8 +71,9 @@ public class UiTests : IDisposable
         // top-right nav
         Assert.Contains("Home", _driver.PageSource);
         Assert.Contains("Contact", _driver.PageSource);
-        Assert.Contains("Login/Register", _driver.PageSource);
+        Assert.Contains("Login / Register", _driver.PageSource);
     }
+
     [Fact]
     public void Smoke_ContactPageLoads()
     {
@@ -101,11 +105,13 @@ public class UiTests : IDisposable
         var title = WaitForElement(By.CssSelector("h1.hero-title"));
         Assert.Equal("Deerfield Retreat", title.Text.Trim());
     }
+
     private IWebElement WaitForElement(By by, int timeoutSeconds = 10)
     {
-        var wait = new WebDriverWait(new SystemClock(), _driver, TimeSpan.FromSeconds(timeoutSeconds), TimeSpan.FromMilliseconds(500));
+        var wait = new WebDriverWait(new SystemClock(), _driver,
+            TimeSpan.FromSeconds(timeoutSeconds),
+            TimeSpan.FromMilliseconds(500));
+
         return wait.Until(drv => drv.FindElement(by));
     }
-
-
 }
