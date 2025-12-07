@@ -1,33 +1,16 @@
-﻿html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+﻿/* =========================
+   Global
+   ========================= */
+
+html, body {
+    font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 a, .btn-link {
     color: #006bb7;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
-.form-control:focus,
-.form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-.content {
-    padding-top: 1.1rem;
-}
-
-h1:focus {
-    outline: none;
-}
-
+/* Validation / error styles */
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
@@ -54,7 +37,10 @@ h1:focus {
     border-color: #929292;
 }
 
-/* Login styles */
+/* =========================
+   Login page
+   ========================= */
+
 .login-wrapper {
     display: flex;
     justify-content: center;
@@ -242,4 +228,141 @@ h1:focus {
     .property-text-card {
         padding: 1.25rem 1.25rem;
     }
+}
+
+/* =========================
+   Layout / Shell
+   ========================= */
+
+footer {
+    margin-top: 1rem;
+}
+
+/* Main content card under the layout */
+.content {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Nestled Nooks AppBar + Drawer */
+
+.nn-appbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding-inline: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.nn-menu-btn {
+    margin-right: 0.75rem;
+}
+
+.nn-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nn-logo-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #14532d, #0f766e);
+    color: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.nn-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.nn-brand-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #ffffff !important;
+}
+
+.nn-brand-subtitle {
+    font-size: 0.75rem;
+    color: #e5e7eb !important; /* soft white-gray */
+}
+
+.nn-nav-link {
+    text-transform: none;
+    margin-inline: 0.25rem;
+}
+
+.nn-nav-cta {
+    text-transform: none;
+    margin-left: 0.5rem;
+    border-radius: 999px;
+}
+
+/* White drawer (Airbnb style) */
+.nn-drawer-white {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+}
+
+    .nn-drawer-white .mud-nav-link {
+        color: #1e293b !important;
+    }
+
+    /* Active link baby-blue highlight */
+    .nn-drawer-white .mud-nav-link-active {
+        background-color: #93c5fd33 !important;
+        color: #0f172a !important;
+        border-radius: 6px;
+    }
+
+    /* Icons */
+    .nn-drawer-white .mud-icon-root {
+        color: #64748b !important;
+    }
+
+/* Drawer section title */
+.nn-drawer-title {
+    color: #475569 !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+/* Soft baby blue AppBar */
+.nn-appbar-sky {
+    background-color: #93c5fd !important; /* soft baby blue */
+    color: #0f172a !important; /* dark slate text */
+    border-bottom: 1px solid #dbeafe;
+}
+
+    /* Buttons & icons inside the AppBar */
+    .nn-appbar-sky .mud-icon-button,
+    .nn-appbar-sky .mud-button {
+        color: #0f172a !important;
+    }
+
+/* Brand text on baby blue */
+.nn-brand-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #0f172a !important; /* very dark slate */
+}
+
+.nn-brand-subtitle {
+    font-size: 0.75rem;
+    color: #1f2937 !important; /* dark gray */
+}
+
+.nn-logo-img {
+    height: 32px;
+    width: auto;
+    border-radius: 6px; /* optional */
 }

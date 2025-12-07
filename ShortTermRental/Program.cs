@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using ShortTermRental.Components;
 using ShortTermRental.Data;
+using MudBlazor.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 builder.Services
     .AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddMudServices();
 
 builder.Services.AddRazorPages(); // Needed for Identity UI pages
 

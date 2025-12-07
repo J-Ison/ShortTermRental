@@ -1,82 +1,115 @@
 ﻿@inherits LayoutComponentBase
+@using MudBlazor
+@using Microsoft.AspNetCore.Components.Routing
 
-<div class="container-fluid">
-	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="#">Nestled Nooks</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav ms-auto">
-					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/">Home</a>
-					</li>
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
-					@* Hide while you only have 1 property *@
-					@*
-					<li class="nav-item">
-						<a class="nav-link" href="/booking">Booking</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/properties">Properties</a>
-					</li>
-					*@
+<MudLayout>
 
-					<li class="nav-item">
-						<a class="nav-link" href="/contact">Contact</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/login">Login/Register</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+    <!-- Top App Bar -->
+	<MudAppBar Elevation="4" Class="nn-appbar nn-appbar-sky">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                       Color="Color.Inherit"
+                       Edge="Edge.Start"
+                       OnClick="@ToggleDrawer"
+                       Class="nn-menu-btn" />
 
-	<!-- Main Layout -->
-	<div class="row">
-		<!-- Sidebar (Optional) -->
-		@* Uncomment and customize if you decide to include a sidebar *@
-		@* <aside class="col-md-3 d-none d-md-block bg-light p-3">
-            <h4>Quick Links</h4>
-            <ul class="list-unstyled">
-                <li><a href="#">Link 1</a></li>
-                <li><a href="#">Link 2</a></li>
-                <li><a href="#">Link 3</a></li>
-                <li><a href="#">Link 4</a></li>
-            </ul>
-        </aside> *@
+        <div class="nn-brand">
+			<img src="Images/apple5_blue.png"
+				 alt="Apple5 Logo"
+				 class="nn-logo-img" />
 
-		<!-- Main Content -->
-		<section class="col-12">
-			<main class="px-4">
-				<article class="content">
-					@Body
-				</article>
-			</main>
-		</section>
-	</div>
-</div>
+            <div class="nn-brand-text">
+                <div class="nn-brand-title">Nestled Nooks</div>
+                <div class="nn-brand-subtitle">Relax • Recharge • Reset</div>
+            </div>
+        </div>
 
-<style>
-	.navbar-brand {
-		font-size: 1.5rem;
-		font-weight: bold;
-	}
+        <MudSpacer />
 
-	.navbar-nav .nav-link {
-		font-size: 1rem;
-	}
+        <!-- Desktop links -->
+        <MudHidden Breakpoint="Breakpoint.MdAndDown">
+            <MudButton Variant="Variant.Text"
+                       Color="Color.Inherit"
+                       Href="/"
+                       Class="nn-nav-link">
+                Home
+            </MudButton>
+            <MudButton Variant="Variant.Text"
+                       Color="Color.Inherit"
+                       Href="/contact"
+                       Class="nn-nav-link">
+                Contact
+            </MudButton>
+            <MudButton Variant="Variant.Text"
+                       Color="Color.Inherit"
+                       Href="/login"
+                       Class="nn-nav-cta">
+                Login / Register
+            </MudButton>
+        </MudHidden>
+    </MudAppBar>
 
-	.content {
-		margin-top: 20px;
-		padding: 20px;
-		background: #f9f9f9;
-		border-radius: 10px;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	}
+    <!-- Sidebar Drawer -->
+	<MudDrawer @bind-Open="_drawerOpen"
+			   Elevation="4"
+			   Class="nn-drawer-white"
+			   Anchor="Anchor.Left">
+        <MudNavMenu>
 
-	
-</style>
+            <MudText Class="nn-drawer-title px-4 pb-2 pt-3">
+                Menu
+            </MudText>
+
+            <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">
+                Home
+            </MudNavLink>
+
+            @* Uncomment later when you add these *@
+            @*
+            <MudNavLink Href="/booking" Icon="@Icons.Material.Filled.Event">
+                Booking
+            </MudNavLink>
+            <MudNavLink Href="/properties" Icon="@Icons.Material.Filled.House">
+                Properties
+            </MudNavLink>
+            *@
+
+            <MudNavLink Href="/contact" Icon="@Icons.Material.Filled.Email">
+                Contact
+            </MudNavLink>
+
+            <MudNavLink Href="/login" Icon="@Icons.Material.Filled.Lock">
+                Login / Register
+            </MudNavLink>
+
+        </MudNavMenu>
+    </MudDrawer>
+
+    <!-- Main content -->
+    <MudMainContent>
+        <div class="px-4">
+            <article class="content">
+                @Body
+            </article>
+        </div>
+    </MudMainContent>
+
+    <!-- Footer -->
+    <MudFooter Class="text-end text-muted small px-3 py-2">
+        Nestled Nooks • v @AppVersion
+    </MudFooter>
+
+</MudLayout>
+
+@code {
+    private bool _drawerOpen;
+
+    private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
+
+    private string AppVersion =>
+        typeof(Program).Assembly.GetName().Version?.ToString() ?? "0.0.0";
+}
